@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "orderItems",
+            "otherEntityName": "orderItem",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "orderEntry"
+        },
+        {
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "orderEntry"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "serviceType",
+            "fieldType": "ServiceType",
+            "fieldValues": "PICKUP_DELIVERY,DROPOFF,SELF",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "transactionDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "totalAmount",
+            "fieldType": "BigDecimal",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "paymentStatus",
+            "fieldType": "PaymentStatus",
+            "fieldValues": "PAID,UNPAID"
+        }
+    ],
+    "changelogDate": "20180706010610",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "order_entry",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

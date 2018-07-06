@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "productName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "productCategory",
+            "fieldType": "ProductCategory",
+            "fieldValues": "SERVICE_WASH,SERVICE_DRY,SERVICE_FOLD,CHEMICAL,SPIN_DRY,PLASTIC"
+        },
+        {
+            "fieldName": "unitPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20180706002749",
+    "dto": "no",
+    "searchEngine": false,
+    "service": "no",
+    "entityTableName": "product",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

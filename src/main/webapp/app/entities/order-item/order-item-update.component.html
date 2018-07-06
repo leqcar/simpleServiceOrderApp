@@ -1,0 +1,83 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-order-item-heading">Create or edit a Order Item</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!orderItem.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="orderItem.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_itemCode">Item Code</label>
+                    <input type="text" class="form-control" name="itemCode" id="field_itemCode"
+                        [(ngModel)]="orderItem.itemCode" required/>
+                    <div [hidden]="!(editForm.controls.itemCode?.dirty && editForm.controls.itemCode?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemCode?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_itemName">Item Name</label>
+                    <input type="text" class="form-control" name="itemName" id="field_itemName"
+                        [(ngModel)]="orderItem.itemName" required/>
+                    <div [hidden]="!(editForm.controls.itemName?.dirty && editForm.controls.itemName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.itemName?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_quantity">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" id="field_quantity"
+                        [(ngModel)]="orderItem.quantity" required/>
+                    <div [hidden]="!(editForm.controls.quantity?.dirty && editForm.controls.quantity?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.quantity?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.quantity?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_unitAmount">Unit Amount</label>
+                    <input type="number" class="form-control" name="unitAmount" id="field_unitAmount"
+                        [(ngModel)]="orderItem.unitAmount" required/>
+                    <div [hidden]="!(editForm.controls.unitAmount?.dirty && editForm.controls.unitAmount?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.unitAmount?.errors?.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.controls.unitAmount?.errors?.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orderEntry">Order Entry</label>
+                    <select class="form-control" id="field_orderEntry" name="orderEntry" [(ngModel)]="orderItem.orderEntry" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="orderEntryOption.id === orderItem.orderEntry?.id ? orderItem.orderEntry : orderEntryOption" *ngFor="let orderEntryOption of orderentries; trackBy: trackOrderEntryById">{{orderEntryOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orderItem">
+            <h2><span>Order Item</span> {{orderItem.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Item Code</span></dt>
+                <dd>
+                    <span>{{orderItem.itemCode}}</span>
+                </dd>
+                <dt><span>Item Name</span></dt>
+                <dd>
+                    <span>{{orderItem.itemName}}</span>
+                </dd>
+                <dt><span>Quantity</span></dt>
+                <dd>
+                    <span>{{orderItem.quantity}}</span>
+                </dd>
+                <dt><span>Unit Amount</span></dt>
+                <dd>
+                    <span>{{orderItem.unitAmount}}</span>
+                </dd>
+                <dt><span>Order Entry</span></dt>
+                <dd>
+                    <div *ngIf="orderItem.orderEntry">
+                        <a [routerLink]="['/order-entry', orderItem.orderEntry?.id, 'view']">{{orderItem.orderEntry?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/order-item', orderItem.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
